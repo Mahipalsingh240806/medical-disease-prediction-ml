@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Medical Disease Prediction</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:linear-gradient(135deg,#11998e,#38ef7d);
+}
+
+.container{
+    width:70%;
+    margin:auto;
+    background:white;
+    padding:25px;
+    margin-top:20px;
+    border-radius:15px;
+    box-shadow:0px 0px 15px gray;
+}
+
+h1{
+    text-align:center;
+    color:#11998e;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#11998e;
+    color:white;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0d7c72;
+}
+
+.result{
+    text-align:center;
+    margin-top:20px;
+    font-size:25px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🏥 Medical Disease Prediction</h1>
+
+<form action="/predict" method="POST">
+
+<label>Age</label>
+<input type="number" name="Age" required>
+
+<label>Gender</label>
+<select name="Gender">
+    <option value="0">Male</option>
+    <option value="1">Female</option>
+</select>
+
+<label>BMI</label>
+<input type="number" step="0.01" name="BMI" required>
+
+<label>Blood Pressure</label>
+<input type="number" step="0.01" name="BloodPressure" required>
+
+<label>Glucose Level</label>
+<input type="number" step="0.01" name="GlucoseLevel" required>
+
+<label>Cholesterol</label>
+<input type="number" step="0.01" name="Cholesterol" required>
+
+<label>Heart Rate</label>
+<input type="number" step="0.01" name="HeartRate" required>
+
+<label>Family History</label>
+<select name="FamilyHistory">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Alcohol</label>
+<select name="Alcohol">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Physical Activity</label>
+<select name="PhysicalActivity">
+    <option value="0">Medium</option>
+    <option value="1">High</option>
+    <option value="2">Low</option>
+</select>
+
+<label>Smoking</label>
+<select name="Smoking">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<button type="submit">
+Predict Disease
+</button>
+
+</form>
+
+<div class="result">
+
+{% if prediction %}
+
+Predicted Disease :
+<br><br>
+
+{{ prediction }}
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>
